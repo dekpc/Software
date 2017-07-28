@@ -1,0 +1,84 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+void ordem (float peso[10])
+{
+	int i,j,aux;
+	
+	for (i=1;i<=9;i++)
+	{
+		for(j=i+1;j<=10;j++)
+		{
+			if (peso[i]>peso[j])
+			{
+				aux = peso[i];
+				peso[i] = peso[j];
+				peso[j] = aux;
+			}
+		}
+	}
+}
+void relacao(float peso[10], float *min, float *max)
+{
+	int i;
+	*min = peso[1];
+	*max = peso[1];
+	
+		for(i=1;i<=10;i++)
+		{
+			if(peso[i] < *min)
+			{
+				*min = peso[i];
+			}
+			if(peso[i] > *max)
+			{
+			
+				*max = peso[i];
+			}
+		}
+}
+
+
+int main(int argc, char *argv[]) {
+
+	int i,j,aux;
+	float menor,maior,min,max;
+	float peso[10];
+	float n_peso;
+	
+	
+	setlocale(LC_ALL,"Portuguese");
+	
+	printf("Controle de bois !\n");
+	printf("----------------------------------------------------\n");
+	
+	for(i=1;i<=10;i++)
+	{
+		printf("Digite o peso do boi [%d]: ",i);
+		scanf("%f",&peso[i]);
+			
+			
+	}
+	
+	printf("\nLista de bois cadastrados em ordem crescente!\n");
+	printf("-----------------------------------------------------\n");
+	
+	ordem(peso);
+	
+	for(i=1;i<=10;i++)
+	{
+		printf("Boi [%d] possui %.2f Kg\n",i,peso[i]);
+	}
+	
+	printf("-----------------------------------------------------\n");
+	
+	
+	relacao(peso,&menor,&maior);
+		
+	printf("\nO boi com maior peso e de %.2f kg\n",maior);
+	printf("O boi com menor peso e de %.2f kg",menor);
+	
+	
+	return 0;
+}
