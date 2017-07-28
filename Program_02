@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+
+float duracao_jogo (float hora_inical, float hora_final);
+
+int main(int argc, char *argv[]) {
+	
+	float hora_inicial, hora_final;
+	float duracao;
+	
+	setlocale (LC_ALL,"Portuguese");
+	
+	printf("Digite a hora incial do jogo: ");
+	scanf("%f",&hora_inicial);
+	printf("Digite a hora final do joogo: ");
+	scanf("%f",&hora_final);
+	
+		duracao = duracao_jogo(hora_final,hora_inicial);
+	if(duracao>1440)
+	{
+		printf("O jogo ultrapassou o limite de 24 horas, não pode continuar!\n");
+	}
+	else if (duracao<1440)
+	{
+		printf("O jogo durou %.2f minutos",duracao);
+	}
+	
+	
+	return 0;
+}
+
+float duracao_jogo (float hora_inicial, float hora_final)
+{
+	float duracao;
+	{
+		duracao = (hora_final - hora_inicial)*60;
+		return(duracao);
+	}
+}
